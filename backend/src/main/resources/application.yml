@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: sistema-matriculas
+  # Spring Boot 4: a conexão fica em spring.mongodb.*
+  # MongoDB Atlas: mongodb+srv://<usuario>:<senha>@<cluster>.mongodb.net/<banco>
+  mongodb:
+    uri: ${MONGODB_URI:mongodb://127.0.0.1:27017/matriculas}
+  data:
+    mongodb:
+      auto-index-creation: true
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    session:
+      timeout: 2h
+      cookie:
+        http-only: true
+        same-site: lax
+
+matriculas:
+  cors:
+    origens: ${CORS_ORIGENS:http://localhost:5173}
+  seed:
+    enabled: ${SEED_ENABLED:true}
+    senha: ${SEED_PASSWORD:senha123}
+  regras:
+    vagas-por-disciplina: 60
+    minimo-alunos: 3
+    max-obrigatorias: 4
+    max-optativas: 2
+    valor-credito: 389.90
