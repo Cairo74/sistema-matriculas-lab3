@@ -1,0 +1,12 @@
+# MongoDB local para desenvolvimento (em produção use o MongoDB Atlas).
+services:
+  mongo:
+    image: mongo:7
+    container_name: matriculas-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
